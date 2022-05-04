@@ -1,0 +1,118 @@
+<IDOCTYPE html>
+    <html>
+
+    <head>
+       <link href="EstiloNumperfecto.css" rel="stylesheet" type="text/css">
+        <meta http-equiv="Contec-Type" content="text/html; charset=iso-8859-1">
+        <title> Numero perfecto</title>
+    </head>
+
+    <body>
+
+
+        <div id="contenedor">
+            <div id="encabezado">
+                <h1> Numero perfecto </h1>
+            </div>
+
+
+            <div id="centro">
+                <div id="contenido">
+                    <h1>
+                        <ul class="nav">
+                            <li><a href="verificacion de numeros"> Verificacion del Numero</a></li>
+                        </ul>
+
+                        <h2>Ingrese un numero </h2>
+                        <br>
+
+                        <form action="#" method="get">
+                            <label for="Desde"> Desde: </label>
+                            <input type="text" name="Desde" id="Desde"><br>
+                            <br>
+                            <label for="Hasta"> Hasta: </label>
+                            <input type="text" name="Hasta" id="Hasta"><br>
+                            <br>
+
+                            <button type="button" onclick="Validar()">Validar </button>
+                            <br>
+                            <br>
+                            <label for="Resultado" id="Resultado"> Resultado </label>
+
+                            
+                    </h1>
+                </div>
+            </div>
+
+
+
+            <div id="piedepaginas">
+                <p> Ralizado por Carolina Alvarez Madrid </p>
+            </div>
+
+            </form>
+
+            <script type="text/javascript">
+                function Validar() {
+                    let Desde = parseInt(document.getElementById("Desde").value);
+                    let Hasta = parseInt(document.getElementById("Hasta").value) ;
+                    
+                    console.log( typeof(Hasta));
+                    console.log(Hasta);
+                    // document.write("el número perfecto Desde: " + Desde + " Hasta " + Hasta + " Son :  <br>");
+
+                    var perfectos = [];
+                    errores = "";
+                    // se inicia con la verificacion de que los numeros sean enteros, tambien se analiza los reiduos de los 
+                    // numeros 
+                    if (Desde > 0) {
+                        while (Desde <= Hasta) {
+                            cont = Desde - 1;
+                            divisores = [];
+                            while (cont > 0) {
+                                residuo = Desde % cont;
+                                if (residuo == 0) {
+                                    divisores.push(cont);
+                                }
+
+                                cont = cont - 1;
+                            }
+                            // se hace un analisis de uno en uno de los datos brindados para luego informar los datos correspondientes 
+                            let sum = 0;
+                            for (let i = 0; i < divisores.length; i++) {
+                                sum += divisores[i];
+                            }
+
+                            if (sum == Desde) {
+                                console.log("Encontramos un perfecto");
+                                perfectos.push(Desde);
+                            }
+
+                            Desde = Desde + 1;
+                        }
+                        console.log("numeros perfectos dentro del rango", perfectos);
+                        //Se indican cuales son los numeros perfectos 
+                        document.write("Los números naturales perfectos son:  " + perfectos + "<br>");
+                    } else {
+                        if (Desde < 0) {
+                            console.log("El número no puede ser negativo");
+                            errores = "El número no puede ser negativo";
+                            document.write("Se tiene el siguiente error:  " + errores);
+                        } else {
+                            console.log("El número debe ser mayor a 0");
+                            errores = "El número debe ser mayor a 0";
+                            document.write("Se tiene el siguiente error:  " + errores);
+                        }
+                        // este es el mensaje que se lanza si ponen datos que no se pueden evaluar
+                    }
+                    
+                }
+
+            </script>
+
+           
+           
+    </body>
+
+
+    </html>
